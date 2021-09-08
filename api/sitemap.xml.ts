@@ -13,7 +13,6 @@ export default async (
   }
 
   const siteMaps = await getSiteMaps()
-
   // cache sitemap for up to one hour
   res.setHeader(
     'Cache-Control',
@@ -37,6 +36,11 @@ const createSitemap = (
       </url>
 
       ${Object.keys(siteMap.canonicalPageMap)
+        .filter(
+          (canonicalPagePath) =>
+            siteMap.site.rootNotionPageId !==
+            siteMap.canonicalPageMap[canonicalPagePath].replace('-', '')
+        )
         .map((canonicalPagePath) =>
           `
             <url>
