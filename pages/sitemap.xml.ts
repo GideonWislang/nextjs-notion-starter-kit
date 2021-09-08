@@ -34,25 +34,11 @@ const createSitemap = (
       </url>
 
       ${Object.keys(siteMap.canonicalPageMap)
-        .filter((canonicalPagePath) => {
-          try {
-            console.log(
-              siteMap.site.rootNotionPageId +
-                ':\n' +
-                siteMap.canonicalPageMap[canonicalPagePath] +
-                ':\n' +
-                siteMap.canonicalPageMap +
-                ':\n' +
-                canonicalPagePath
-            )
-            return (
-              siteMap.site.rootNotionPageId !==
-              siteMap.canonicalPageMap[canonicalPagePath]?.replaceAll('-', '')
-            )
-          } catch (error) {
-            return true
-          }
-        })
+        .filter(
+          (canonicalPagePath) =>
+            siteMap.site.rootNotionPageId !==
+            siteMap.canonicalPageMap[canonicalPagePath]?.replace(/-/g, '')
+        )
         .map((canonicalPagePath) =>
           `
             <url>

@@ -33,30 +33,11 @@ export async function getStaticPaths() {
   const ret = {
     paths: siteMaps.flatMap((siteMap) =>
       Object.keys(siteMap.canonicalPageMap)
-        .filter((canonicalPagePath) => {
-          try {
-            console.log('------------*********-------')
-            console.log(canonicalPagePath)
-            console.log(siteMap.canonicalPageMap)
-            console.log(siteMap.site.rootNotionPageId)
-            console.log(
-              siteMap.canonicalPageMap[canonicalPagePath]?.replaceAll('-', '')
-            )
-            console.log(
-              siteMap.site.rootNotionPageId !==
-                siteMap.canonicalPageMap[canonicalPagePath]?.replaceAll('-', '')
-            )
-            console.log('------------*********-------')
-
-            return (
-              siteMap.site.rootNotionPageId !==
-              siteMap.canonicalPageMap[canonicalPagePath]?.replaceAll('-', '')
-            )
-          } catch (error) {
-            throw error
-            // return true
-          }
-        })
+        .filter(
+          (canonicalPagePath) =>
+            siteMap.site.rootNotionPageId !==
+            siteMap.canonicalPageMap[canonicalPagePath]?.replace(/-/g, '')
+        )
         .map((pageId) => ({
           params: {
             pageId
