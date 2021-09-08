@@ -41,11 +41,16 @@ export async function getStaticPaths() {
   const ret = {
     paths: siteMaps.flatMap((siteMap) =>
       Object.keys(siteMap.canonicalPageMap)
-        .filter(
-          (canonicalPagePath) =>
-            siteMap.site.rootNotionPageId !==
-            siteMap.canonicalPageMap[canonicalPagePath].replaceAll('-', '')
-        )
+        .filter((canonicalPagePath) => {
+          try {
+            return (
+              siteMap.site.rootNotionPageId !==
+              siteMap.canonicalPageMap[canonicalPagePath]?.replaceAll('-', '')
+            )
+          } catch (error) {
+            return true
+          }
+        })
         .map((pageId) => ({
           params: {
             pageId
