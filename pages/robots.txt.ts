@@ -1,15 +1,9 @@
 import { NextApiRequest, NextApiResponse } from 'next'
-
 import { host } from '../lib/config'
 
-export default async (
-  req: NextApiRequest,
-  res: NextApiResponse
-): Promise<void> => {
-  if (req.method !== 'GET') {
-    return res.status(405).send({ error: 'method not allowed' })
-  }
+export default function Robots() {}
 
+export const getServerSideProps = async ({ res }) => {
   // cache robots.txt for up to 60 seconds
   res.setHeader(
     'Cache-Control',
@@ -17,7 +11,10 @@ export default async (
   )
   res.setHeader('Content-Type', 'text/plain')
   res.write(`User-agent: *
-Sitemap: ${host}/api/sitemap.xml
+Sitemap: ${host}/sitemap.xml
 `)
   res.end()
+  return {
+    props: {}
+  }
 }

@@ -4,14 +4,9 @@ import { SiteMap } from '../lib/types'
 import { host } from '../lib/config'
 import { getSiteMaps } from '../lib/get-site-maps'
 
-export default async (
-  req: NextApiRequest,
-  res: NextApiResponse
-): Promise<void> => {
-  if (req.method !== 'GET') {
-    return res.status(405).send({ error: 'method not allowed' })
-  }
+export default function Sitemap() {}
 
+export const getServerSideProps = async ({ res }) => {
   const siteMaps = await getSiteMaps()
   // cache sitemap for up to one hour
   res.setHeader(
@@ -21,6 +16,9 @@ export default async (
   res.setHeader('Content-Type', 'text/xml')
   res.write(createSitemap(siteMaps[0]))
   res.end()
+  return {
+    props: {}
+  }
 }
 
 const createSitemap = (
@@ -48,9 +46,6 @@ const createSitemap = (
         })
         .map((canonicalPagePath) =>
           `
-            <url>
-              <loc>${host}/${canonicalPagePath}</loc>
-            </url>
             <url>
               <loc>${host}/${canonicalPagePath}</loc>
             </url>
