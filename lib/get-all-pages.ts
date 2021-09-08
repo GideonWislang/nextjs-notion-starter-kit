@@ -31,6 +31,10 @@ export async function getAllPagesImpl(
         uuid
       })
 
+      if (pageId.replaceAll('-', '') == rootNotionPageId) {
+        return map
+      }
+
       if (map[canonicalPageId]) {
         console.error(
           'error duplicate canonical page id',
