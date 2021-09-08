@@ -51,6 +51,9 @@ const createSitemap = (
             <url>
               <loc>${host}/${canonicalPagePath}</loc>
             </url>
+            <url>
+              <loc>${host}/${canonicalPagePath}</loc>
+            </url>
           `.trim()
         )
         .join('')}
