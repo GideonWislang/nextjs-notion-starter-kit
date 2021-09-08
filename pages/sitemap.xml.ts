@@ -36,6 +36,15 @@ const createSitemap = (
       ${Object.keys(siteMap.canonicalPageMap)
         .filter((canonicalPagePath) => {
           try {
+            console.log(
+              siteMap.site.rootNotionPageId +
+                ':\n' +
+                siteMap.canonicalPageMap[canonicalPagePath] +
+                ':\n' +
+                siteMap.canonicalPageMap +
+                ':\n' +
+                canonicalPagePath
+            )
             return (
               siteMap.site.rootNotionPageId !==
               siteMap.canonicalPageMap[canonicalPagePath]?.replaceAll('-', '')
