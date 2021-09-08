@@ -35,6 +35,10 @@ export async function getStaticPaths() {
       Object.keys(siteMap.canonicalPageMap)
         .filter((canonicalPagePath) => {
           try {
+            console.log('------------*********-------')
+            console.log(siteMap.canonicalPageMap)
+            console.log('------------*********-------')
+
             return (
               siteMap.site.rootNotionPageId !==
               siteMap.canonicalPageMap[canonicalPagePath]?.replaceAll('-', '')
