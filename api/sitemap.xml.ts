@@ -39,7 +39,7 @@ const createSitemap = (
         .filter(
           (canonicalPagePath) =>
             siteMap.site.rootNotionPageId !==
-            siteMap.canonicalPageMap[canonicalPagePath].replace('-', '')
+            siteMap.canonicalPageMap[canonicalPagePath].replaceAll('-', '')
         )
         .map((canonicalPagePath) =>
           `
