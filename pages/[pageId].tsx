@@ -38,6 +38,14 @@ export async function getStaticPaths() {
             console.log('------------*********-------')
             console.log(canonicalPagePath)
             console.log(siteMap.canonicalPageMap)
+            console.log(siteMap.site.rootNotionPageId)
+            console.log(
+              siteMap.canonicalPageMap[canonicalPagePath]?.replaceAll('-', '')
+            )
+            console.log(
+              siteMap.site.rootNotionPageId !==
+                siteMap.canonicalPageMap[canonicalPagePath]?.replaceAll('-', '')
+            )
             console.log('------------*********-------')
 
             return (
@@ -45,7 +53,8 @@ export async function getStaticPaths() {
               siteMap.canonicalPageMap[canonicalPagePath]?.replaceAll('-', '')
             )
           } catch (error) {
-            return true
+            throw error
+            // return true
           }
         })
         .map((pageId) => ({
