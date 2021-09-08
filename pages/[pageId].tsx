@@ -36,6 +36,7 @@ export async function getStaticPaths() {
         .filter((canonicalPagePath) => {
           try {
             console.log('------------*********-------')
+            console.log(canonicalPagePath)
             console.log(siteMap.canonicalPageMap)
             console.log('------------*********-------')
 
