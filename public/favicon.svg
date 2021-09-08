@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="60px" height="60px" viewBox="0 0 80 80" version="1.1" css-inspector-installed="true">
+		<defs>
+		  <linearGradient x1="0%" y1="0%" x2="100%" y2="100%" id="g">
+			<stop stop-color="#06f5f9" offset="0%"/>
+			<stop stop-color="#f906f5" offset="100%"/>
+		  </linearGradient>
+		</defs>
+		<g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+		  
+<circle fill="url(#g)" cx="40" cy="40" r="40"/>
+		</g>
+	  </svg>
