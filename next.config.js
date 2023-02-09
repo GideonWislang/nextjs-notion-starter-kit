@@ -8,13 +8,15 @@ module.exports = withBundleAnalyzer({
   images: {
     domains: ['pbs.twimg.com']
   },
-  redirects: [
-    {
-      source: '/add-your-substack-signup-form-to-your-website',
-      destination: '/how-to-add-a-substack-signup-form-to-your-website',
-      permanent: true
-    }
-  ],
+  async redirects() {
+    return [
+      {
+        source: '/add-your-substack-signup-form-to-your-website',
+        destination: '/how-to-add-a-substack-signup-form-to-your-website',
+        permanent: true
+      }
+    ]
+  },
   future: {
     webpack5: true
   }
