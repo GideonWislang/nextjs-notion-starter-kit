@@ -10,7 +10,7 @@ module.exports = withBundleAnalyzer({
   },
   redirects: [
     {
-      source: 'add-your-substack-signup-form-to-your-website',
+      source: '/add-your-substack-signup-form-to-your-website',
       destination: '/how-to-add-a-substack-signup-form-to-your-website',
       permanent: true
     }
