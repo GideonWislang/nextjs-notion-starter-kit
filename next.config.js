@@ -5,14 +5,16 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 })
 
 module.exports = withBundleAnalyzer({
-  images: {
-    domains: ['pbs.twimg.com']
-  },
   async redirects() {
     return [
       {
-        source: '/add-your-substack-signup-form-to-your-website',
-        destination: '/how-to-add-a-substack-signup-form-to-your-website',
+        source: '/',
+        destination: 'https://substackapi.com/docs',
+        permanent: true
+      },
+      {
+        source: '/:path*',
+        destination: 'https://substackapi.com/docs/:path*',
         permanent: true
       }
     ]
